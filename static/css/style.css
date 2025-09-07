@@ -1060,3 +1060,74 @@ hr {
 .white-list li::marker {
   color: #ffffff; /* رنگ بولت‌ها هم سفید */
 }
+
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* دقیقا ۴ ستون */
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.news-card {
+    background: var(--card-bg, #1e1e1e);
+    color: #fff;
+    padding: 2rem 1.5rem;
+    border-radius: 1.2rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+}
+
+.news-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.news-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-news {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.25s ease;
+}
+
+.btn-news:hover {
+    background: rgba(255,255,255,0.25);
+}
+
+/* گرادیان‌های متنوع */
+.gradient-0 { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); }
+.gradient-1 { background: linear-gradient(135deg, #1a2980, #26d0ce); }
+.gradient-2 { background: linear-gradient(135deg, #373b44, #4286f4); }
+.gradient-3 { background: linear-gradient(135deg, #42275a, #734b6d); }
+.gradient-4 { background: linear-gradient(135deg, #000428, #004e92); }
+
+
+@media (max-width: 1024px) {
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr); /* تبلت → دو تا در ردیف */
+    }
+}
+
+@media (max-width: 600px) {
+    .news-grid {
+        grid-template-columns: 1fr; /* موبایل → یکی در ردیف */
+    }
+}

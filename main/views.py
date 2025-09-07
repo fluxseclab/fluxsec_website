@@ -1,5 +1,5 @@
 import requests
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
 from .models import News
 
 API_URL = 'https://flux-fast-api.onrender.com'
@@ -36,3 +36,8 @@ class NewsView(TemplateView):
         context = super(NewsView, self).get_context_data(**kwargs)
         context["context"] = News.objects.all()
         return context
+
+
+class NewsDetailView(DetailView):
+    model = News
+    template_name = 'news_detail.html'

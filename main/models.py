@@ -5,6 +5,7 @@ class News(models.Model):
     url = models.CharField(max_length=200)
     content = models.TextField()
     date_added = models.DateField(auto_now_add=True)
+    is_translated = models.BooleanField(default=False)
     
     
     def __str__(self):

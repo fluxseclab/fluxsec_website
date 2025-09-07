@@ -1,14 +1,24 @@
 {% extends 'base.html' %}
 {% block title %} اخبار {% endblock %}
 {% block content %}
-<h1>آخرین اخبار</h1>
-<ul>
+
+<section class="hero">
+    <h1>📰 آخرین اخبار</h1>
+    <p>با Flux Security Lab همیشه یک قدم جلوتر از تهدیدات امنیتی باشید 🚀</p>
+</section>
+
+<div class="news-grid">
     {% for news in context %}
-        <li>
-            <a href="{{ news.url }}">{{ news }}</a>
-        </li>
+        <article class="news-card gradient-{{ forloop.counter|add:"0"|divisibleby:"5" }}">
+            <div class="news-icon">
+                <span>🔒</span>
+            </div>
+            <h3>{{ news.title }}</h3>
+            <a href="{% url 'news_detail' news.pk %}" class="btn-news">مشاهده خبر →</a>
+        </article>
     {% empty %}
-        <li>خبری وجود ندارد.</li>
+        <p class="muted">⚠️ خبری وجود ندارد.</p>
     {% endfor %}
-</ul>
+</div>
+
 {% endblock %}
