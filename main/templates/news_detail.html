@@ -5,6 +5,6 @@
     لینک در سایت اصلی : <strong><a href={{ news.url  }}> {{ news.url }} </a></strong>
 </b>
 <main>
-    {{ news.content }}
+    {{ news.content|safe }}
 </main>
 {% endblock content %}
