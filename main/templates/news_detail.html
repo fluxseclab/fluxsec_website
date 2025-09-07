@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block title %} جزئیات خبر {% endblock %}
 {% block content %}
-<p>
-    لینک در سایت اصلی : {{ news.url }}
-</p>
-<p>
+<b>
+    لینک در سایت اصلی : <strong><a href={{ news.url  }}> {{ news.url }} </a></strong>
+</b>
+<main>
     {{ news.content }}
-</p>
+</main>
 {% endblock content %}
