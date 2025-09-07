@@ -11,8 +11,8 @@
     {% for news in context %}
         <article class="news-card">
             <span class="news-lock">🔒</span>
-            <h3>{{ news.title }}</h3>
-            <p class="news-text">{{ news }}...</p>
+            <h3></h3>
+            <p class="news-text">{{ news.title }}...</p>
             <a href="{% url 'news_detail' news.pk %}" class="btn-news">مشاهده خبر →</a>
         </article>
     {% empty %}
