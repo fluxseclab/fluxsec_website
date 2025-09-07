@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %} اخبار {% endblock %}
+{% block content %}
+<h1>آخرین اخبار</h1>
+<ul>
+    {% for news in context %}
+        <li>
+            <a href="{{ news.url }}">{{ news }}</a>
+        </li>
+    {% empty %}
+        <li>خبری وجود ندارد.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

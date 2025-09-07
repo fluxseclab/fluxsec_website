@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} درباره ما{% endblock %}
+
+{% block content %}
+<section id="about">
+    <h1>درباره ما</h1>
+    <p>
+        <strong>Flux Security Lab</strong> یک تیم کوچک مستقل در حوزه <strong>امنیت سایبری</strong> است که با تمرکز بر تحقیق، توسعه و ارزیابی سیستم‌های دیجیتال فعالیت می‌کند
+        تا دارایی‌های دیجیتال خود را در برابر تهدیدات روزافزون ایمن نگه دارند.
+    </p>
+    <hr>
+    <b>
+        ایده تشکیل Flux Security Lab از نیاز به یک مرکز تحقیقاتی مستقل در حوزه <strong>تحقیقات امنیتی تهاجمی</strong> و دفاعی شکل گرفت.
+    </b>
+    <hr>
+    <p>
+        ارزش‌های اصلی ما شامل <strong>شفافیت، استقلال، مسئولیت‌پذیری و پایبندی به اخلاق حرفه‌ای</strong> است.
+        ما هیچ وابستگی به سازمان‌ها یا نهادهای دولتی و خصوصی نداریم و این استقلال به ما اجازه می‌دهد 
+        بدون تعارض منافع، بهترین و دقیق‌ترین راهکارهای امنیتی را ارائه کنیم.
+    </p>
+    <p>
+        چشم‌انداز ما ایجاد دنیایی است که در آن امنیت دیجیتال به یک استاندارد ضروری تبدیل شود،
+        جایی که هر کاربر — از یک فرد عادی تا یک سازمان بزرگ — بتواند با آرامش خاطر در فضای مجازی فعالیت کند.
+        ما باور داریم که با همکاری، آموزش و به اشتراک‌گذاری دانش، می‌توانیم سطح امنیت سایبری را برای همه ارتقا دهیم.
+    </p>
+    <hr>
+    <h1>اعضای تیم : </h1>
+    <div>
+        <div class="team-container">
+            <div class="team-card">
+                <img src="{% static 'images/team/anita.jpg' %}" alt="Anita Image" id="team-member">
+                <strong>Anita</strong>
+                <small>Logo Designer</small>
+            </div>
+            <div class="team-card">
+                <img src="{% static 'images/team/wuka.jpg' %}" alt="wuKa image" id="team-member">
+                <strong>wuKa</strong>
+                <small>Founder Of Flux</small>
+            </div>
+            <div class="team-card">
+                <img src="{% static 'images/team/ayeen.jpg' %}" alt="Ayeen Image" id="team-member">
+                <strong>Ayeen</strong>
+                <small>Logo Designer</small>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}
