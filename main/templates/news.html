@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %} اخبار {% endblock %}
+{% block title %}اخبار{% endblock %}
 {% block content %}
 
 <section class="hero">
@@ -9,11 +9,10 @@
 
 <div class="news-grid">
     {% for news in context %}
-        <article class="news-card gradient-{{ forloop.counter|add:"0"|divisibleby:"5" }}">
-            <div class="news-icon">
-                <span>🔒</span>
-            </div>
+        <article class="news-card">
+            <span class="news-lock">🔒</span>
             <h3>{{ news.title }}</h3>
+            <p class="news-text">{{ news }}...</p>
             <a href="{% url 'news_detail' news.pk %}" class="btn-news">مشاهده خبر →</a>
         </article>
     {% empty %}
@@ -21,4 +20,4 @@
     {% endfor %}
 </div>
 
-{% endblock %}
+{% endblock content %}
