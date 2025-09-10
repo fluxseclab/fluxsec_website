@@ -21,9 +21,7 @@ class NewsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         
-        url_list = requests.get(API_URL)
-            .json()
-            .get('urls', [])
+        url_list = requests.get(API_URL).json().get('urls', [])
         
         for url in url_list:
             news_obj = News.objects.filter(url=url).first()
