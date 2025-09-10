@@ -27,10 +27,10 @@ class NewsView(TemplateView):
 
                 try:
                     url = response['url']
-                    content = response['content']
+                    content = response['content'].replace('\n', '').strip()
                 except:
                     break
-
+                    
                 News.objects.create(url=url, content=content)
 
         context = super(NewsView, self).get_context_data(**kwargs)
