@@ -1,3 +1,5 @@
+import asyncio
+import aiohttp
 import requests
 from django.views.generic import TemplateView, DetailView
 from .models import News
@@ -19,31 +21,44 @@ class AboutUsView(TemplateView):
 class NewsView(TemplateView):
     template_name = 'news.html'
 
-    def get_context_data(self, **kwargs):
-        
-        url_list = requests.get(API_URL).json().get('urls', [])
-        
-        for url in url_list:
-            news_obj = News.objects.filter(url=url).first()
+    async def fetch_content(self, session, url):
+        try:
+            async with session.get(f'{API_URL}/scrape?url={url}') as resp:
+                data = await resp.json()
+                content = data['content'].replace('\n', '').strip()
+                return url, content
+        except Exception as e:
+            print(f"Error fetching {url}: {e}")
+            return url, None
 
-            try:
-                response = requests.get(f'{API_URL}/scrape?url={url}').json()
-                content = response['content'].replace('\n', '').strip()
-            except Exception as e:
-                print(f"Error fetching {url}: {e}")
+    async def fetch_all(self, urls):
+        async with aiohttp.ClientSession() as session:
+            tasks = [self.fetch_content(session, url) for url in urls]
+            return await asyncio.gather(*tasks)
+
+    def get_context_data(self, **kwargs):
+        url_list = requests.get(API_URL).json().get('urls', [])
+
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        results = loop.run_until_complete(self.fetch_all(url_list))
+
+        for url, content in results:
+            if not content:
                 continue
 
+            news_obj = News.objects.filter(url=url).first()
             if news_obj is None:
                 News.objects.create(url=url, content=content, is_translated=True)
-            
             elif not news_obj.is_translated:
                 news_obj.content = content
                 news_obj.is_translated = True
                 news_obj.save()
 
-        context = super(NewsView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context["context"] = News.objects.all()
         return context
+
 
 
 class NewsDetailView(DetailView):
