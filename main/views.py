@@ -20,28 +20,13 @@ class NewsView(TemplateView):
     template_name = 'news.html'
 
     def get_context_data(self, **kwargs):
-        
         url_list = requests.get(API_URL).json().get('urls', [])
-        
+
         for url in url_list:
-            news_obj = News.objects.filter(url=url).first()
+            if not News.objects.filter(url=url).exists():
+                News.objects.create(url=url, is_translated=False)
 
-            try:
-                response = requests.get(f'{API_URL}/scrape?url={url}').json()
-                content = response['content'].replace('\n', '').strip()
-            except Exception as e:
-                print(f"Error fetching {url}: {e}")
-                continue
-
-            if news_obj is None:
-                News.objects.create(url=url, content=content, is_translated=True)
-            
-            elif not news_obj.is_translated:
-                news_obj.content = content
-                news_obj.is_translated = True
-                news_obj.save()
-
-        context = super(NewsView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context["context"] = News.objects.all()
         return context
 
