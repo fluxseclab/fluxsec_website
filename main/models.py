@@ -1,13 +1,19 @@
 from django.db import models
-
+from bs4 import BeautifulSoup
 
 class News(models.Model):
     url = models.CharField(max_length=200)
-    title = models.CharField(max_length=250, default='عنوان وارد نشده است! محتوا را مشاهده کنید ...')
     content = models.TextField()
-    date_added = models.DateField(auto_now_add=True)
     is_translated = models.BooleanField(default=False)
-    
+    is_trend = models.BooleanField(default=False)
+    is_critical = models.BooleanField(default=False)
+    date_added = models.DateField(auto_now_add=True)
+
+
     def __str__(self):
-        return self.content[:250]
-    
+        soup = BeautifulSoup(self.content, 'html.parser')
+        title = soup.find('h1')
+        if title:
+            return title.text
+
+        return "تایتل وارد نشده است! محتوا را ببینید..."

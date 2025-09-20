@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}اخبار{% endblock %}
 {% block content %}
-
 <section class="hero">
     <h1>📰 آخرین اخبار</h1>
     <p>با Flux Security Lab همیشه یک قدم جلوتر از تهدیدات امنیتی باشید 🚀</p>
@@ -12,12 +11,11 @@
         <article class="news-card">
             <span class="news-lock">🔒</span>
             <h3></h3>
-            <p class="news-text">{{ news.title }}...</p>
+            <p class="news-text">{{ news }}...</p>
             <a href="{% url 'news_detail' news.pk %}" class="btn-news">مشاهده خبر →</a>
         </article>
     {% empty %}
         <p class="muted">⚠️ خبری وجود ندارد.</p>
     {% endfor %}
 </div>
-
 {% endblock content %}

@@ -1,23 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
-
-{% block title %} درباره ما{% endblock %}
-
+{% block title %} درباره ما {% endblock title %}
 {% block content %}
 <section id="about">
     <h1>درباره ما</h1>
     <p>
-        <strong>Flux Security Lab</strong> یک تیم کوچک مستقل در حوزه <strong>امنیت سایبری</strong> است که با تمرکز بر تحقیق، توسعه و ارزیابی سیستم‌های دیجیتال فعالیت می‌کند
+        <strong>Flux Security Lab</strong> یک تیم کوچک مستقل در حوزه <strong>امنیت سایبری</strong> است که با تمرکز بر
+        تحقیق، توسعه و ارزیابی سیستم‌های دیجیتال فعالیت می‌کند
         تا دارایی‌های دیجیتال خود را در برابر تهدیدات روزافزون ایمن نگه دارند.
     </p>
     <hr>
     <b>
-        ایده تشکیل Flux Security Lab از نیاز به یک مرکز تحقیقاتی مستقل در حوزه <strong>تحقیقات امنیتی تهاجمی</strong> و دفاعی شکل گرفت.
+        ایده تشکیل Flux Security Lab از نیاز به یک مرکز تحقیقاتی مستقل در حوزه <strong>تحقیقات امنیتی تهاجمی</strong> و
+        دفاعی شکل گرفت.
     </b>
     <hr>
     <p>
         ارزش‌های اصلی ما شامل <strong>شفافیت، استقلال، مسئولیت‌پذیری و پایبندی به اخلاق حرفه‌ای</strong> است.
-        ما هیچ وابستگی به سازمان‌ها یا نهادهای دولتی و خصوصی نداریم و این استقلال به ما اجازه می‌دهد 
+        ما هیچ وابستگی به سازمان‌ها یا نهادهای دولتی و خصوصی نداریم و این استقلال به ما اجازه می‌دهد
         بدون تعارض منافع، بهترین و دقیق‌ترین راهکارهای امنیتی را ارائه کنیم.
     </p>
     <p>
@@ -30,20 +30,20 @@
     <div>
         <div class="team-container">
             <div class="team-card">
-                <img src="{% static 'images/team/wuka.jpg' %}" alt="wuKa image" id="team-member">
+                <img src="{% static 'images/team/wuka.jpg' %}" alt="wuKa" id="team-member">
                 <strong>wuKa</strong>
                 <small>Founder Of Flux</small>
             </div>
-            {% comment %} <div class="team-card">
-                <img src="{% static 'images/team/ayeen.jpg' %}" alt="Ayeen Image" id="team-member">
+            <div class="team-card">
+                <img src="{% static 'images/team/ayeen.jpg' %}" alt="Ayeen" id="team-member">
                 <strong>Ayeen</strong>
                 <small>Designer</small>
             </div>
             <div class="team-card">
-                <img src="{% static 'images/team/anita.jpg' %}" alt="Anita Image" id="team-member">
+                <img src="{% static 'images/team/no_image.jpg' %}" alt="Anita" id="team-member">
                 <strong>Anita</strong>
                 <small>Designer</small>
-            </div> {% endcomment %}
+            </div>
         </div>
 
     </div>
