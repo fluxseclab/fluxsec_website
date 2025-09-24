@@ -2,7 +2,7 @@ import requests
 from django.views.generic import TemplateView, DetailView
 from .models import News
 
-API_URL = 'https://flux-fast-api.onrender.com'
+API_URL = 'https://fast-api-7gqj.onrender.com'
 
 class HomeView(TemplateView):
     template_name = 'home.html'
